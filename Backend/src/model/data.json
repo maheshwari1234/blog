@@ -1,0 +1,26 @@
+[
+    {
+      
+        "email":"ABCadmin@gmail.com",
+        "userName":"ABC",
+        "password":"Abc@1234"
+      
+        
+    },
+    {
+      
+        "email":"Xyzagent@gmail.com",
+        "userName":"XYZ",
+        "password":"Xyz@1234"
+    
+        
+    },
+    {
+      
+        "email":"Pqruser@gmail.com",
+        "userName":"PQR",
+        "password":"Pqr@1234"
+       
+        
+    }
+]
