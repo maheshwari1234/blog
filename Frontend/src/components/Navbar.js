@@ -63,6 +63,8 @@ const Navbarr = (props) => {
                             <Nav.Item><Link to="/login" style={{ color: "yellow" }}>Login</Link></Nav.Item>
                         }
 
+<Nav.Item><Link to="/texteditor" style={{ color: "yellow", marginLeft: "1em" }}>Editor</Link></Nav.Item>
+
                     </Nav>
                 </Navbar.Collapse>
 
