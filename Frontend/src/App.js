@@ -11,6 +11,8 @@ import Search from './components/search'
 import SearchByWord from './components/serachByword'
 import IndpostUser from "./components/IndpostByUser"
 import TextEditor from "./components/RichTextEditor"
+import Edit from "./components/edit"
+
 
 const App = () => {
   return (
@@ -27,6 +29,8 @@ const App = () => {
           <Route exact path="/new" component={Newpost} />
           <Route exact path="/:id/:Title" component={Indpost} />
           <Route exact path="/texteditor" component={TextEditor}/>
+          <Route exact path="/edit" component={Edit}/>
+
         </Switch>
       </BrowserRouter>
     </React.Fragment>
