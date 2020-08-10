@@ -1,111 +1,73 @@
-import React from "react";
-import 'bootstrap/dist/css/bootstrap.css';
-import { Form, InputGroup, Card } from 'react-bootstrap'
+import React, { Component } from "react"
+
+import { Card, Button } from 'react-bootstrap'
 import {
-  TypeBold, TypeItalic, TypeStrikethrough, Link, Fonts, ChatRightQuoteFill, Code,
-  ListUl, ListOl, Paperclip, ArrowClockwise, ArrowCounterclockwise
+    TypeBold, TypeItalic, TypeStrikethrough, Link, Fonts, ChatRightQuoteFill, Code,
+    ListUl, ListOl, Paperclip, ArrowClockwise, ArrowCounterclockwise
 } from 'react-bootstrap-icons';
 
 
-class Edit extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      word: '',
-      bold: false,
-      italic:false,
-      strike:false
+export default class YourComponent extends Component {
 
+
+    handleChange = (name) => {
+        console.log("name", name)
+        switch (name) {
+            case 'Bold':
+                document.execCommand('bold', false, null)
+                break;
+            case 'Italic':
+                document.execCommand('italic', false, null)
+                break;
+            case 'Strike':
+                document.execCommand('strikethrough', false, null)
+                break;
+            default:
+                break;
+        }
     }
-  }
 
-inputChange=(e)=>{
-    console.log("value",e.target.value)
-    this.setState({word:e.target.value})
-}
+    render() {
+        return (
+            <div className="container">
+                <div className="offset-2 col-sm-8"><br />
+                    <Card>
 
-handlechange=(name)=>{
-    const value=this.state.word
-    switch(name){
-        case 'Bold':
-    this.setState({bold:true})
-break
-    case 'Italic':
-        this.setState({italic:true})
-    break
-    case 'Strike':
-        this.setState({strike:true})
-        break
-        default:
-            break
+                        <div>
+                            <fieldset>
+                                <Button variant="default" style={{ fontSize: "20px", marginLeft: "5px", background: "lightgray" }} onClick={() => this.handleChange("Bold")}><TypeBold  style={{fontSize:"25px"}}/>
+                                </Button>
+                                <Button variant="default" style={{ fontSize: "20px", marginLeft: "1px", background: "lightgray" }} onClick={() => this.handleChange("Italic")}><TypeItalic  style={{fontSize:"25px"}} />
+                                </Button>
+                                <Button variant="default" style={{ fontSize: "20px", marginLeft: "1px", background: "lightgray" }} onClick={() => this.handleChange("Strike")}><TypeStrikethrough  style={{fontSize:"25px"}}/>
+                                </Button>
+                                <Button variant="default" style={{ fontSize: "20px", marginLeft: "1px", background: "lightgray" }} onClick={() => this.handleChange("Link")}><Link style={{fontSize:"25px"}}/>
+                                </Button>
+                                <Button variant="default" style={{ fontSize: "20px", marginLeft: "7px", background: "lightgray" }} onClick={() => this.handleChange("Fonts")}><Fonts style={{fontSize:"25px"}}/>
+                                </Button>
+                                <Button variant="default" style={{ fontSize: "20px", marginLeft: "1px", background: "lightgray" }} onClick={() => this.handleChange("Quote")}><ChatRightQuoteFill style={{fontSize:"25px"}}/>
+                                </Button>
+                                <Button variant="default" style={{ fontSize: "20px", marginLeft: "1px", background: "lightgray" }} onClick={() => this.handleChange("Code")}><Code style={{fontSize:"25px"}}/>
+                                </Button>
+                                <Button variant="default" style={{ fontSize: "20px", marginLeft: "1px", background: "lightgray" }} onClick={() => this.handleChange("ListOl")}><ListOl style={{fontSize:"25px"}} />
+                                </Button>
+                                <Button variant="default" style={{ fontSize: "20px", marginLeft: "1px", background: "lightgray" }} onClick={() => this.handleChange("ListUl")}><ListUl style={{fontSize:"25px"}}/>
+                                </Button>
+                                <Button variant="default" style={{ fontSize: "20px", marginLeft: "10px", background: "lightgray" }} onClick={() => this.handleChange("PaperClip")}><Paperclip style={{fontSize:"25px"}} />
+                                </Button>
+                                <Button variant="default" style={{ fontSize: "20px", marginLeft: "10px", background: "lightgray" }} onClick={() => this.handleChange("Clock")}><ArrowClockwise style={{fontSize:"25px"}}/>
+                                </Button>
+                                <Button variant="default" style={{ fontSize: "20px", marginLeft: "1px", background: "lightgray" }} onClick={() => this.handleChange("AntiClock")}><ArrowCounterclockwise style={{fontSize:"25px"}} />
+                                </Button>
+                            </fieldset>
+                            <Card.Body>
+                                <div contenteditable="true" style={{ outline: "1px solid", height: "500px" }}>
+                                </div>
+                            </Card.Body>
+                        </div>
+                    </Card>
+                </div>
+            </div>
+        )
     }
 }
-
-
-
-  render() {
-    return (
-      <div className="container">
-        <div className="offset-2 col-sm-8"><br />
-          <Card>
-
-            <Form inline>
-              <InputGroup className="mb-2 mr-sm-4">
-                <InputGroup.Prepend>
-                  <InputGroup.Text style={{ fontSize: "25px" }} name="Bold" onClick={() => this.handlechange('Bold')}><TypeBold /></InputGroup.Text>
-                  <InputGroup.Text style={{ fontSize: "25px" }} name="Italic" onClick={() => this.handlechange('Italic')}><TypeItalic /></InputGroup.Text>
-
-                  <InputGroup.Text style={{ fontSize: "25px" }} onClick={() => this.handlechange('Strike')}><TypeStrikethrough /></InputGroup.Text>
-                  <InputGroup.Text style={{ fontSize: "25px" }} onClick={() => this.handlechange('Link')}><Link /></InputGroup.Text>
-                </InputGroup.Prepend>
-
-              </InputGroup>
-              <InputGroup className="mb-2 mr-sm-2">
-                <InputGroup.Prepend>
-                  <InputGroup.Text style={{ fontSize: "25px" }}><Fonts /></InputGroup.Text>
-                  <InputGroup.Text style={{ fontSize: "25px" }}><ChatRightQuoteFill /></InputGroup.Text>
-                  <InputGroup.Text style={{ fontSize: "25px" }}><Code /></InputGroup.Text>
-                  <InputGroup.Text style={{ fontSize: "25px" }}><ListOl /></InputGroup.Text>
-                  <InputGroup.Text style={{ fontSize: "25px" }}><ListUl /></InputGroup.Text>
-
-                </InputGroup.Prepend>
-
-              </InputGroup>
-              <InputGroup className="mb-2 mr-sm-2">
-                <InputGroup.Prepend>
-                  <InputGroup.Text style={{ fontSize: "25px" }}><Paperclip /></InputGroup.Text>
-                </InputGroup.Prepend>
-              </InputGroup>
-              <InputGroup className="mb-2 mr-sm-2">
-                <InputGroup.Prepend>
-                  <InputGroup.Text style={{ fontSize: "25px" }}><ArrowCounterclockwise /></InputGroup.Text>
-                  <InputGroup.Text style={{ fontSize: "25px" }}><ArrowClockwise /></InputGroup.Text>
-                </InputGroup.Prepend>
-              </InputGroup><br />
-              {this.state.bold?
-            <textarea  rows="8" cols="95" style={{fontFamily:'bold'}}/>:null}
-            {this.state.italic?
-             <textarea   rows="8" cols="95" style={{fontStyle:'italic'}}/>:null}
-             {this.state.strike?
-             <textarea   rows="8" cols="95" style={{textDecorationLine: 'line-through'}}/>:null}
-              
-            </Form>
-            
-
-          </Card>
-
-
-        </div>
-
-      </div>
-
-
-
-
-
-
-    )
-  }
-}
-
-export default Edit
