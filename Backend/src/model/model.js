@@ -104,6 +104,7 @@ model.getIdPost = (id) => {
 
 //getbyword
 model.getByWord = (search) => {
+    console.log("in backend",search)
     var word = search
     var word2 = word[0].toUpperCase() +
         word.slice(1)
@@ -112,6 +113,18 @@ model.getByWord = (search) => {
             return data.map((found) => {
                 return found.Posts.map((newdata) => {
                     if (newdata.Course === word2) {
+                        const username=found.name
+                        return {newdata,username}
+                    }
+                    else if(newdata.Title.includes(search)){
+                        const username=found.name
+                        return {newdata,username}
+                    }
+                    else if(newdata.Brief.includes(search)){
+                        const username=found.name
+                        return {newdata,username}
+                    }
+                    else if(newdata.Body.includes(search)){
                         const username=found.name
                         return {newdata,username}
                     }
