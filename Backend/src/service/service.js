@@ -130,4 +130,13 @@ service.getByTagNew = (tag) => {
     })
 
 }
+
+//getProfile
+service.getProfile = (name) => {
+    return dbLayer.getProfile(name).then((data) => {
+        if (data) {
+            return data
+        }
+    })
+}
 module.exports = service
