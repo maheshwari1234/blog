@@ -11,7 +11,7 @@ const Post = (props) => {
 
           <div className="offset-2 col-md-6">
             <div className="card-title">
-              <h6><span><PersonFill /></span>{' '}{props.name}</h6>
+              <Link to={`/profile/${props.name}`} style={{ color: 'black' }}><span><PersonFill /></span>{' '}{props.name}</Link><br/>
 
               <Link to={`/${props.name}/${props.id}/${props.Title}`} style={{ color: 'deepblue', fontSize: "20px" }}>{props.Title.toUpperCase()}</Link>
             </div>
