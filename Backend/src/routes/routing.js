@@ -107,5 +107,13 @@ routing.get("/t/:tag", (req, res, next) => {
     })
 })
 
-
+//search by user
+routing.get("/profile/:name", (req, res, next) => {
+    const name = req.params.name
+    service.getProfile(name).then((data) => {
+       res.json(data)
+    }).catch((err) => {
+        next(err)
+    })
+})
 module.exports = routing;
