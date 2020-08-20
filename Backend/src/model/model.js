@@ -104,7 +104,6 @@ model.getIdPost = (id) => {
 
 //getbyword
 model.getByWord = (search) => {
-    console.log("in backend",search)
     var word = search
     var word2 = word[0].toUpperCase() +
         word.slice(1)
@@ -223,6 +222,17 @@ model.getByTagNew = (tag) => {
 
                 })
             })
+        })
+    })
+}
+
+
+//getPorfile
+model.getProfile =(name)=> {
+    return collection.getpostsCollection().then((collection) => {
+        return collection.find({name:name}, { _id: 0 }).then((data) => {
+            // console.log("user data",data[0].Posts)
+            return data[0].Posts
         })
     })
 }
