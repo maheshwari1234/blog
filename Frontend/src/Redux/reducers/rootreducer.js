@@ -5,6 +5,7 @@ import RegisterReducer from './RegisterReducer'
 import newpostReducer from './NewpostReducer'
 import Searchtag from './SearchTagReducer'
 import PostUserReducer from "./Indpostuser"
+import ProfileReducer from "./ProfileReducer"
 
 import {combineReducers} from 'redux'
 
@@ -15,7 +16,8 @@ const rootreducer=combineReducers({
     register:RegisterReducer,
     newpost:newpostReducer,
     searchByTag:Searchtag,
-    postuser:PostUserReducer
+    postuser:PostUserReducer,
+    profile:ProfileReducer
 
 })
 
