@@ -3,6 +3,7 @@ import { Redirect,Link} from "react-router-dom";
 import { Navbar, Nav, Form, FormControl, Button, NavDropdown } from 'react-bootstrap';
 import { logoutAction } from '../Redux/action/Loginaction';
 import { useDispatch, useSelector } from 'react-redux';
+import {Search} from 'react-bootstrap-icons';
 
 
 const Navbarr = (props) => {
@@ -18,6 +19,14 @@ const Navbarr = (props) => {
         event.persist();
         setInputs(inputs => ({ ...inputs, [event.target.name]: event.target.value }));
     }
+
+    const handleKeypress = e => {
+        //it triggers by pressing the enter key
+        e.preventDefault()
+      if (e.keyCode === 13) {
+        submit();
+      }
+    };
     const submit = () => {        
            setName({submitted:true})
            
@@ -43,8 +52,8 @@ const Navbarr = (props) => {
         <React.Fragment>
             <Navbar bg="secondary" variant="dark">
                 <Form inline>
-                    <FormControl type="text" placeholder="Search" className="mr-sm-2" onChange={handleChange} name="word" />
-                    <Button variant="outline-light" onClick={submit}>Search</Button>
+                    <FormControl type="text" placeholder="Search" className="mr-sm-2" onChange={handleChange}  onKeyDown={handleKeypress} name="word" />
+                    <Button variant="outline-light" onClick={submit} ><Search/></Button>
                 </Form>
                 <Nav className="mr-auto">
                     <NavDropdown title="Posts by category" >
